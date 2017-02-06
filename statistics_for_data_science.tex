@@ -1,0 +1,179 @@
+\documentclass[10pt,landscape]{article}
+
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage[landscape]{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{latexsym, marvosym}
+\usepackage{pifont}
+\usepackage{lscape}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{bm}  % bold math \bm{}
+\usepackage[bottom]{footmisc}
+\usepackage{tikz}
+\usetikzlibrary{shapes}
+\usepackage{pdfpages}
+\usepackage{wrapfig}
+\usepackage{enumitem}
+\setlist[description]{leftmargin=0pt}
+\usepackage{xfrac}
+\usepackage[pdftex,
+            pdfauthor={Janet Matsen},
+            pdftitle={Statistics for Data Science},
+            pdfsubject={Essential concepts},
+            pdfkeywords={machine learning} {statistics} {cheatsheet} {pdf} {cheat} {sheet} {formulas} {equations}
+            ]{hyperref}
+\usepackage{relsize}
+\usepackage{rotating}
+
+
+ \newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
+    \def\independenT#1#2{\mathrel{\setbox0\hbox{$#1#2$}%
+    \copy0\kern-\wd0\mkern4mu\box0}} 
+            
+% Janet defined
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+
+% Probably from Stat cheatsheet:            
+\newcommand{\noin}{\noindent}    
+\newcommand{\logit}{\textrm{logit}} 
+\newcommand{\var}{\textrm{Var}}
+\newcommand{\cov}{\textrm{Cov}} 
+\newcommand{\corr}{\textrm{Corr}} 
+\newcommand{\N}{\mathcal{N}}
+\newcommand{\Bern}{\textrm{Bern}}
+\newcommand{\Bin}{\textrm{Bin}}
+\newcommand{\Beta}{\textrm{Beta}}
+\newcommand{\Gam}{\textrm{Gamma}}
+\newcommand{\Expo}{\textrm{Expo}}
+\newcommand{\Pois}{\textrm{Pois}}
+\newcommand{\Unif}{\textrm{Unif}}
+\newcommand{\Geom}{\textrm{Geom}}
+\newcommand{\NBin}{\textrm{NBin}}
+\newcommand{\Hypergeometric}{\textrm{HGeom}}
+\newcommand{\HGeom}{\textrm{HGeom}}
+\newcommand{\Mult}{\textrm{Mult}}
+
+\geometry{top=.4in,left=.2in,right=.2in,bottom=.4in}
+
+\pagestyle{empty}
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%x
+                                {\normalfont\large\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                {-1explus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%
+                                {\normalfont\normalsize\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {1ex plus .2ex}%
+                                {\normalfont\small\bfseries}}
+\makeatother
+
+\setcounter{secnumdepth}{0}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+
+% -----------------------------------------------------------------------
+
+\usepackage{titlesec}
+
+\titleformat{\section}
+{\color{blue}\normalfont\large\bfseries}
+{\color{blue}\thesection}{1em}{}
+\titleformat{\subsection}
+{\color{cyan}\normalfont\normalsize\bfseries}
+{\color{cyan}\thesection}{1em}{}
+% Comment out the above 5 lines for black and white
+
+\begin{document}
+
+\raggedright
+\footnotesize
+\begin{multicols*}{3}
+
+% multicol parameters
+% These lengths are set only within the two main columns
+%\setlength{\columnseprule}{0.25pt}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% TITLE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{center}
+    {\color{blue} \Large{\textbf{Statistics for Data Science}}} \\
+   % {\Large{\textbf{Probability Cheatsheet}}} \\
+    % comment out line with \color{blue} and uncomment above line for b&w
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% ATTRIBUTIONS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\scriptsize
+
+%Used LaTeX template from an existing Statistics cheat sheet: \url{https://github.com/wzchen/probability_cheatsheet}, by William Chen (\url{http://wzchen.com}) and Joe Blitzstein. 
+This targets particular areas, and does not include some of the more basic areas. 
+Also see my \href{https://github.com/JanetMatsen/probability_cheatsheet/blob/master/probability_cheatsheet.pdf}{statistics (probability) cheat sheet}, and \href{https://github.com/JanetMatsen/Machine-Learning/blob/master/ML_cheatsheet.pdf}{ML cheat sheet}. 
+
+% Licensed under \texttt{\href{http://creativecommons.org/licenses/by-nc-sa/4.0/}{CC BY-NC-SA 4.0}}. 
+% I have not asked for the rights to images used in lecture. 
+
+\begin{center}
+    Last Updated \today
+\end{center}
+
+% Cheatsheet format from
+% http://www.stdout.org/$\sim$winston/latex/
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% BEGIN CHEATSHEET
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  
+    \hfill \\   
+     \hfill \\  
+\smallskip \hrule height 2pt \smallskip
+
+\input{./tex/exploring_a_new_dataset.tex}
+
+\input{./tex/hypothesis_testing.tex}
+
+\input{./tex/experimental_design.tex}
+
+\input{./tex/bayes.tex}
+
+\input{./tex/glossary.tex}
+
+%probability distributions, 
+%statistical significance, 
+%hypothesis testing, and 
+%regression.
+
+%Bayesian thinking. Bayesian thinking is the process of updating beliefs as additional data is collected, and it's the engine behind many machine learning models.
+
+%Key concepts include conditional probability, priors and posteriors, and maximum likelihood.
+
+
+
+% Reference:  \includegraphics[width=2.5in]{figures/example_kernel_separation.pdf}  \hfill \\
+
+
+
+\vspace{4in}
+\bigskip
+
+
+\end{multicols*}
+\end{document}

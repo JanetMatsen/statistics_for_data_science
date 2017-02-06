@@ -1,0 +1,41 @@
+\section{Hypothesis testing}
+Is the effect you see in a sample likely to appear in a larger population? 
+There are several ways we could formulate this question, including Fisher null hypothesis testing, Neyman-Pearson decision theory, and Bayesian inference.
+The logic of this process is similar to a proof by contradiction.
+
+Steps:
+\begin{enumerate}
+	\item choose a test statistic, e.g. the difference between means of two groups. 
+	\item define a null hypothesis
+	\item compute a p-value, which is the probability of seeing the apparent effect if the null hypothesis is true. 
+	\item interpret the result. If the p-value is low, the effect is said to be statistically significant, 
+		which means that it is unlikely to have occurred by chance. 
+		In that case we infer that the effect is more likely to appear in the larger population.
+\end{enumerate}
+
+Interpret p-values according to their order of magnitude.  If the p-value is
+\begin{itemize}
+	\item  $<$ 1\%, the effect is unlikely to be due to chance; 
+	\item $>$ 10\%, the effect can plausibly be explained by chance. 
+	\item P-values between 1\% and 10\% should be considered borderline.
+\end{itemize}
+
+In general the p-value for a one-sided test is about half the p-value for a two-sided test, depending on the shape of the distribution.
+
+\subsubsection{testing a correlation}
+If x and y appear correlated, mix up the x, y pairs and look at the correlation of this permuted data. 
+Repeat 100x, and look at the distribution of correlations seen; 
+	this gives perspective on whether the correlation is real. 
+	
+\subsubsection{testing proportions}
+E.g. testing whether a die is fair. 
+Define a test statistic to be the $\sum$ abs((actual counts) - (expected counts)).
+Simulate what this test statistic ends up being for a fair die.
+The p-value is the fraction of the time this statistic is at your threshold or higher. 
+
+If instead you use the square, $\sum$ ((actual counts) - (expected counts))$^2$, large outliers are weighted more strongly, and the probability appears more extreme. 
+You are now in the realm of Chi-squared tests.
+
+\subsubsection{Chi-squared tests}
+$\displaystyle \chi^2 = \sum_i \frac{(O_i - E_i)^2}{E_i}$
+$O_i$ are observed frequencies, $E_i$ are expected frequencies. 
